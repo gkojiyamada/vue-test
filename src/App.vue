@@ -38,37 +38,58 @@
     </v-navigation-drawer>
 
     <v-system-bar
-      window
+      app
       dark
+      color="primary"
     >
-      <v-icon>mdi-message</v-icon>
-      <span>10 unread messages</span>
       <v-spacer></v-spacer>
-      <v-icon>mdi-minus</v-icon>
-      <v-icon>mdi-checkbox-blank-outline</v-icon>
-      <v-icon>mdi-close</v-icon>
+      <v-icon>mdi-wifi-strength-4</v-icon>
+      <v-icon>mdi-signal-cellular-outline</v-icon>
+      <v-icon>mdi-battery</v-icon>
+      <span>12:30</span>
     </v-system-bar>
 
-    <v-app-bar app>
+    <v-app-bar
+      app
+      absolute
+      color="grey"
+      elevate-on-scroll
+      scroll-target="#scrolling-techniques-7"
+    >
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Title</v-toolbar-title>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>mdi-dots-vertical</v-icon>
+      </v-btn>
     </v-app-bar>
 
     <v-main>
       <router-view></router-view>
     </v-main>
 
-    <v-footer padless>
+    <v-footer app padless>
     <v-col
       class="text-center"
       cols="12"
     >
       {{ new Date().getFullYear() }} — <strong>Footer</strong>
     </v-col>
-  </v-footer>
+    </v-footer>
 
   <v-bottom-navigation
+    app
     v-model="value"
     :background-color="color"
     dark
