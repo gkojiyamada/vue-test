@@ -1,41 +1,5 @@
 <template>
   <v-app id="inspire">
-     <v-navigation-drawer 
-      v-model="drawer"
-      app
-     >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="text-h6">
-            My Vuetify App
-          </v-list-item-title>
-          <v-list-item-subtitle>
-            Testing Vuetify
-          </v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list
-        dense
-        nav
-      >
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
 
     <v-system-bar
       app
@@ -49,37 +13,13 @@
       <span>12:30</span>
     </v-system-bar>
 
-    <v-app-bar
-      app
-      absolute
-      color="grey"
-      elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
-    >
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>Title</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-heart</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
-    </v-app-bar>
+    <Appbar></Appbar>
 
     <v-main>
       <router-view></router-view>
     </v-main>
 
-    <v-footer app padless>
+    <v-footer padless>
     <v-col
       class="text-center"
       cols="12"
@@ -89,7 +29,7 @@
     </v-footer>
 
   <v-bottom-navigation
-    app
+    padless
     v-model="value"
     :background-color="color"
     dark
@@ -123,9 +63,15 @@
 </template>
 
 <script>
+import Appbar from "@/components/Appbar"
+
   export default {
+    name: "App",
+
+    components:{
+      Appbar
+    },
     data: () => ({
-      drawer: null,
       items: [
           { title: 'Home', icon: 'mdi-view-dashboard' },
           { title: 'Pictures', icon: 'mdi-image' },
