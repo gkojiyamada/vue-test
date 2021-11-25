@@ -13,7 +13,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon to="/home">
+      <v-btn icon to="/">
         <v-icon>mdi-home</v-icon>
       </v-btn>
 
@@ -75,7 +75,7 @@
     data: () => ({
         drawer: null,
         items: [
-          { title: 'Home', icon: 'mdi-home', route: '/home' },
+          { title: 'Home', icon: 'mdi-home', route: '/' },
           { title: 'Pictures', icon: 'mdi-image', route: '/pictures' },
           { title: 'About', icon: 'mdi-help-box', route: '/about' },
           { title: 'Contact', icon: 'mdi-email', route: '/contact'},
