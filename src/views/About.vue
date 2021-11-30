@@ -8,7 +8,7 @@
         <v-spacer>
         <div class="text-center">
           <h3 class="headline white--text text--accent-2">About</h3>
-          <div>This is a site created using Vuetify</div>
+          <div>{{title}}</div>
           <div>It serves as an example of how practical a site can be created using the right tools</div>
         </div>
         </v-spacer>
@@ -18,7 +18,15 @@
 
 <script>
   export default {
-    data: () => ({
-    }),
+    data (){
+      return{
+        titleview: this.$store.state.descriptionTitle
+      }
+    },
+    computed: {
+      title(){
+        return this.$store.getters.upperDescription
+      }
+    },
   }
 </script>

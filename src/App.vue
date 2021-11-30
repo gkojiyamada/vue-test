@@ -67,14 +67,18 @@ import Appbar from "@/components/Appbar"
     components:{
       Appbar
     },
+
     data: () => ({
       items: [
           { title: 'Home', icon: 'mdi-view-dashboard' },
           { title: 'Pictures', icon: 'mdi-image' },
           { title: 'Info', icon: 'mdi-help-box' },
         ],
-        computed: {
-        color () {
+      value: 1,
+    }),
+    
+    computed: {
+      color () {
         switch (this.value) {
           case 0: return 'blue-grey'
           case 1: return 'teal'
@@ -83,6 +87,6 @@ import Appbar from "@/components/Appbar"
           default: return 'blue-grey'
         }
       },
-    },}),
+    },
   }
 </script>

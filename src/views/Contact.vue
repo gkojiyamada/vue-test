@@ -1,39 +1,42 @@
 <template>
-    <v-card
-      class="flex"
-      flat
-      tile
-    >
-      <v-card-title class="teal">
-        <strong class="subheading">You can reach us in the following social networks</strong>
-
-        <v-spacer></v-spacer>
-
-        <v-btn
-          v-for="icon in icons"
-          :key="icon"
-          class="mx-4"
-          dark
-          icon
-        >
-          <v-icon size="24px">
-            {{ icon }}
-          </v-icon>
-        </v-btn>
-      </v-card-title>
-    </v-card>
+<div>
+ <v-row>
+      <v-col
+        v-for="card in users"
+        :key="card"
+        cols="12"
+        sm="6"
+        md="4"
+        xs="2"
+      >
+        <UserCard :cardInfo="card"></UserCard>
+      </v-col>
+    </v-row>
+</div>
 </template>
 
 <script>
+  import UserCard from '../components/UserCards'
+
   export default {
-    data: () => ({
-      icons: [
-        'mdi-email',  
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
-      ],
-    }),
+    name: 'Users',
+    data(){
+      return{
+      }
+    },
+    computed: {
+      users(){
+        return this.$store.state.users
+      },
+    },
+    components: {
+      UserCard,
+    },
+    methods:{
+      
+    },
+    async created(){
+        this.$store.dispatch("fetchUsers")
+    }
   }
 </script>

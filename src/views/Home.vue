@@ -20,18 +20,13 @@
 
   export default {
     name: 'Home',
-    data(){
-      return{
-        titleview: this.$store.state.title
-      }
-    },
     computed: {
       myCards(){
         return this.$store.state.cards
-      }
+      },
     },
     components: {
       MyCard,
-    }
+    },
   }
 </script>

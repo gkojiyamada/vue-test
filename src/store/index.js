@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -14,12 +15,30 @@ export default new Vuex.Store({
            {title:"France", subtitle:"Country with a fine cuisine", description:"France, the largest country in Western Europe, has long been a gateway between the continent's northern and southern regions", image:"https://europa.eu/europass/sites/default/files/2020-04/France_0.jpg"},
            {title:"China", subtitle:"Home of architectural wonders", description:"It is the world's most populous country, with a population of around 1.404 billion.", image:"https://img.emg-services.net/htmlpages/htmlpage2106/china-main-1.jpg"},
            {title:"Japan", subtitle:"Country with a rich culture", description:"Japan is an archipelago, or string of islands, on the eastern edge of Asia.", image:"https://see.news/wp-content/uploads/2021/05/ة.jpg"}],
-    title:'A title'
+    descriptionTitle:'This is a site created using Vuetify, this segment was made using a getter function',
+    descriptionSubtitle:'It serves as an example of how practical a site can be created using the right tools',
+    users: [],
   },
   mutations: {
+    SET_USERS(state, payload){
+      state.users = payload
+    }
   },
   actions: {
+    fetchUsers({commit}){
+        axios.get('https://jsonplaceholder.typicode.com/users')
+        .then(res=>{
+          //this.users=res.data
+          const payload = res.data
+          console.log(payload)
+          commit('SET_USERS', payload)
+          })
+        .catch(err=>{console.log(err)})
+      }
   },
-  modules: {
+  getters: {
+    upperDescription(state){
+      return state.descriptionTitle.toUpperCase()
+    }
   }
 })
